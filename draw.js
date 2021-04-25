@@ -1,6 +1,6 @@
 "use strict"
 
-const GAME_SPEED = 200;
+const GAME_SPEED = 225;
 
 const canvas = document.querySelector(".canvas");
 const ctx = canvas.getContext("2d");
@@ -19,7 +19,7 @@ const setup = (() => {
   fruit.draw();
   console.log(fruit);
 
-  window.setInterval(() => {
+  return window.setInterval(() => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     snake.update();
     fruit.draw();
@@ -30,11 +30,19 @@ const setup = (() => {
       fruit.pickLocation();
       fruit.draw();
     }
+    console.log(snake)
 
     totalEl.innerHTML = `Total = ${snake.total}`
   }, GAME_SPEED)
 });
-setup();
+const app = setup();
+
+const reset =(app) => {
+  clearInterval(app);
+  app = setup();
+
+}
+
 
 window.addEventListener('keydown', (evt) => {
   const direction = evt.key.replace("Arrow", "");
