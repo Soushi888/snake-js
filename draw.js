@@ -30,17 +30,17 @@ const setup = (() => {
       fruit.pickLocation();
       fruit.draw();
     }
-    console.log(snake)
+    // console.log(snake)
 
     totalEl.innerHTML = `Total = ${snake.total}`
   }, GAME_SPEED)
 });
-const app = setup();
+let app = setup();
 
-const reset =(app) => {
+const reset = (app) => {
   clearInterval(app);
   app = setup();
-
+  return app;
 }
 
 

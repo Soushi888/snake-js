@@ -24,6 +24,8 @@ function Snake() {
 
     this.x += this.xSpeed;
     this.y += this.ySpeed;
+    this.currentPos = {x: this.x, y: this.y};
+
 
     if (
       this.x > canvas.width ||
@@ -64,6 +66,6 @@ function Snake() {
 
   this.die = () => {
     alert("You died !");
-    reset(app);
+    app = reset(app);
   }
 }
