@@ -1,50 +1,54 @@
 function Snake() {
-  let x = 0;
-  let y = 0;
-  let xSpeed = scale;
-  let ySpeed = 0;
+  this.x = 0;
+  this.y = 0;
+  this.xSpeed = scale;
+  this.ySpeed = 0;
 
   this.draw = () => {
     ctx.fillStyle = "#20a707";
-    ctx.fillRect(x, y, scale, scale);
+    ctx.fillRect(this.x, this.y, scale, scale);
   }
 
   this.update = () => {
-    x += xSpeed;
-    y += ySpeed;
+    this.x += this.xSpeed;
+    this.y += this.ySpeed;
 
-    if (x > canvas.width) {
-      x = 0;
+    if (this.x > canvas.width) {
+      this.x = 0;
     }
-    if (x < 0) {
-      x = 300;
+    if (this.x < 0) {
+      this.x = 300;
     }
-    if (y > canvas.height) {
-      y = 0;
+    if (this.y > canvas.height) {
+      this.y = 0;
     }
-    if (y < 0) {
-      y = 300;
+    if (this.y < 0) {
+      this.y = 300;
     }
   }
 
   this.changeDirection = (direction) => {
     switch (direction) {
       case "Up" :
-        xSpeed = 0;
-        ySpeed = -scale;
+        this.xSpeed = 0;
+        this.ySpeed = -scale;
         break;
       case "Down" :
-        xSpeed = 0;
-        ySpeed = scale;
+        this.xSpeed = 0;
+        this.ySpeed = scale;
         break;
       case "Left" :
-        xSpeed = -scale;
-        ySpeed = 0;
+        this.xSpeed = -scale;
+        this.ySpeed = 0;
         break;
       case "Right" :
-        xSpeed = scale;
-        ySpeed = 0;
+        this.xSpeed = scale;
+        this.ySpeed = 0;
         break
     }
+  }
+
+  this.eat = (fruit) => {
+    return this.x === fruit.x && this.y === fruit.y;
   }
 }

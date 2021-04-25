@@ -21,6 +21,12 @@ const setup = (() => {
     snake.update();
     fruit.draw();
     snake.draw();
+
+    if (snake.eat(fruit)) {
+      console.log("Fruit ate !")
+      fruit.pickLocation();
+      fruit.draw();
+    }
   }, 250)
 });
 setup();

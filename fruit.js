@@ -1,16 +1,17 @@
 "use strict"
 
 function Fruit() {
-  let x, y;
+  this.x;
+  this.y;
 
   this.pickLocation = () => {
-    x = (Math.floor(Math.random() * rows - 1) + 1) * scale;
-    y = (Math.floor(Math.random() * columns - 1) + 1) * scale;
+    this.x = (Math.floor(Math.random() * rows - 1) + 1) * scale;
+    this.y = (Math.floor(Math.random() * columns - 1) + 1) * scale;
   }
 
   this.draw = () => {
     ctx.fillStyle = "#ff5858";
-    ctx.fillRect(x, y, scale, scale)
+    ctx.fillRect(this.x, this.y, scale, scale)
   }
 }
 
