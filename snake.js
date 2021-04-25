@@ -3,13 +3,25 @@ function Snake() {
   this.y = 0;
   this.xSpeed = scale;
   this.ySpeed = 0;
+  this.total = 0;
+  this.tail = [];
 
   this.draw = () => {
     ctx.fillStyle = "#20a707";
+
+    for (let i = 0; i < this.tail.length; i++) {
+      ctx.fillRect(this.tail[i].x, this.tail[i].y, scale, scale);
+    }
     ctx.fillRect(this.x, this.y, scale, scale);
   }
 
   this.update = () => {
+    for (let i = 0; i < this.tail.length - 1; i++) {
+      this.tail[i] = this.tail[i + 1];
+    }
+
+    this.tail[this.total - 1] = {x: this.x, y: this.y};
+
     this.x += this.xSpeed;
     this.y += this.ySpeed;
 
@@ -49,6 +61,10 @@ function Snake() {
   }
 
   this.eat = (fruit) => {
-    return this.x === fruit.x && this.y === fruit.y;
+    if (this.x === fruit.x && this.y === fruit.y) {
+      this.total++;
+      return true;
+    }
+    return false;
   }
 }
