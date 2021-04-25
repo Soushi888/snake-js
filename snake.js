@@ -12,6 +12,19 @@ function Snake() {
   this.update = () => {
     this.x += this.xSpeed;
     this.y += this.ySpeed;
+
+    if (this.x > canvas.width) {
+      this.x = 0;
+    }
+    if (this.x < 0) {
+      this.x = 300;
+    }
+    if (this.y > canvas.height) {
+      this.y = 0;
+    }
+    if (this.y < 0 ) {
+      this.y = 300;
+    }
   }
 
   this.changeDirection = (direction) => {
