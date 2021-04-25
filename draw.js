@@ -1,19 +1,26 @@
+"use strict"
+
 const canvas = document.querySelector(".canvas");
 const ctx = canvas.getContext("2d");
 const scale = 10;
 const rows = canvas.height / scale;
 const columns = canvas.width / scale;
 
-let snake;
+let snake, fruit;
 
 const setup = (() => {
   snake = new Snake();
-  snake.draw();
+  fruit = new Fruit();
+
+  fruit.pickLocation();
+  fruit.draw();
+  console.log(fruit);
 
   window.setInterval(() => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     snake.update();
     snake.draw();
+    fruit.draw();
   }, 250)
 });
 setup();
