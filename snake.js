@@ -5,7 +5,7 @@ function Snake() {
   let ySpeed = 0;
 
   this.draw = () => {
-    ctx.fillStyle = "#ee4343";
+    ctx.fillStyle = "#20a707";
     ctx.fillRect(x, y, scale, scale);
   }
 
